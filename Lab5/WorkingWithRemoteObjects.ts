@@ -25,12 +25,12 @@ export default function WorkingWithRemoteObjects(app) {
     res.json(assignment);
   };
   const setAssignmentScore = (req, res) => {
-    const { newScore } = req.params;
+    const newScore = req.params.newScore;
     assignment.score = parseInt(newScore);
     res.json(assignment);
   };
   const setAssignmentCompleted = (req, res) => {
-    const { newCompleted } = req.params;
+    const newCompleted = req.params.newCompleted;
     assignment.completed = newCompleted === "true";
     res.json(assignment);
   };
@@ -41,12 +41,12 @@ export default function WorkingWithRemoteObjects(app) {
     res.json(module.name);
   };
   const setModuleName = (req, res) => {
-    const { newName } = req.params;
+    const newName = req.params.newName;
     module.name = newName;
     res.json(module);
   };
   const setModuleDescription = (req, res) => {
-    const { newDescription } = req.params;
+    const newDescription = req.params.newDescription;
     module.description = newDescription;
     res.json(module);
   };

@@ -9,12 +9,16 @@ export default function PathParameters(app) {
     res.send((parseInt(a) - parseInt(b)).toString());
   };
   const multiply = (req, res) => {
-    const { a, b } = req.params;
-    res.send((parseInt(a) * parseInt(b)).toString());
+    const a = parseInt(req.params.a);
+    const b = parseInt(req.params.b);
+    const result = a * b;
+    res.send(result.toString());
   };
   const divide = (req, res) => {
-    const { a, b } = req.params;
-    res.send((parseInt(a) / parseInt(b)).toString());
+    const a = parseInt(req.params.a);
+    const b = parseInt(req.params.b);
+    const result = a / b;
+    res.send(result.toString());
   };
   app.get("/lab5/add/:a/:b", add);
   app.get("/lab5/subtract/:a/:b", subtract);

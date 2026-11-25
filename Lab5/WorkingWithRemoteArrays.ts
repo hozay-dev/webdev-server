@@ -66,14 +66,21 @@ export default function WorkingWithRemoteArrays(app) {
     res.json(todos);
   };
   const updateTodoCompleted = (req, res) => {
-    const { id, completed } = req.params;
+    const id = req.params.id;
+    const completed = req.params.completed;
     const todo = todos.find((t) => t.id === parseInt(id));
     todo.completed = completed === "true";
     res.json(todos);
   };
   const updateTodoDescription = (req, res) => {
-    const { id, description } = req.params;
-    todos = todos.map((t) => (t.id === parseInt(id) ? { ...t, description } : t));
+    const id = req.params.id;
+    const description = req.params.description;
+    todos = todos.map((t) => {
+      if (t.id === parseInt(id)) {
+        return { ...t, description: description };
+      }
+      return t;
+    });
     res.json(todos);
   };
   app.get("/lab5/todos", getTodos);

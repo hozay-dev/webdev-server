@@ -9,12 +9,18 @@ export default function QueryParameters(app) {
       case "subtract":
         result = parseInt(a) - parseInt(b);
         break;
-      case "multiply":
-        result = parseInt(a) * parseInt(b);
+      case "multiply": {
+        const num1 = parseInt(a);
+        const num2 = parseInt(b);
+        result = num1 * num2;
         break;
-      case "divide":
-        result = parseInt(a) / parseInt(b);
+      }
+      case "divide": {
+        const num1 = parseInt(a);
+        const num2 = parseInt(b);
+        result = num1 / num2;
         break;
+      }
       default:
         result = "Invalid operation";
     }

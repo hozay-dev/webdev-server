@@ -46,16 +46,19 @@ export default function UserRoutes(app, db) {
     res.json(updatedUser);
   };
   const findUsersForCourse = (req, res) => {
-    const { courseId } = req.params;
+    const courseId = req.params.courseId;
     const people = dao.findUsersForCourse(courseId);
-    res.json(people.map((person) => ({ ...person, password: undefined })));
+    const safePeople = people.map((person) => {
+      return { ...person, password: undefined };
+    });
+    res.json(safePeople);
   };
   const createUser = (req, res) => {
     const newUser = dao.createUser(req.body);
     res.json(newUser);
   };
   const deleteUser = (req, res) => {
-    const { userId } = req.params;
+    const userId = req.params.userId;
     dao.deleteUser(userId);
     res.sendStatus(200);
   };
